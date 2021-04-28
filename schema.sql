@@ -19,6 +19,13 @@ CREATE TABLE departments (
 -- 5. PRIMARY KEY (dept_no), means that the dept_no column is used as the primary key for this table.
 -- 6. UNIQUE (dept_name) adds the unique constraint to the dept_name column.
 
+-- https://stackoverflow.com/questions/4448340/postgresql-duplicate-key-violates-unique-constraint
+-- SELECT MAX(emp_no) FROM employees;
+
+-- SELECT nextval('the_primary_key_sequence');
+-- SELECT setval('the_primary_key_sequence', (SELECT MAX(the_primary_key) FROM the_table)+1);
+
+
 CREATE TABLE employees (
 	emp_no INT NOT NULL,
 	birth_date DATE NOT NULL,
@@ -36,8 +43,8 @@ dept_no VARCHAR(4) NOT NULL,
     emp_no INT NOT NULL,
     from_date DATE NOT NULL,
     to_date DATE NOT NULL,
-FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
+	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
+	FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
     PRIMARY KEY (emp_no, dept_no)
 );
 
@@ -62,9 +69,10 @@ CREATE TABLE dept_emp (
 	dept_no VARCHAR(4) NOT NULL,
 	from_date DATE NOT NULL,
     to_date DATE NOT NULL,
-FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
-	PRIMARY KEY (emp_no)
+	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
+	FOREIGN KEY (dept_no) REFERENCES departments (dept_no),
+	FOREIGN KEY (emp_no) REFERENCES salaries (emp_no),
+	PRIMARY KEY (emp_no, dept_no)
 );
 
 CREATE TABLE titles (
@@ -72,6 +80,17 @@ CREATE TABLE titles (
 	title VARCHAR NOT NULL,
 	from_date DATE NOT NULL,
     to_date DATE NOT NULL,
-FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
-	PRIMARY KEY (emp_no)
+	FOREIGN KEY (emp_no) REFERENCES employees (emp_no),
+	PRIMARY KEY (emp_no, title, from_date)
 );
+
+-- test tables to ensure they're built correctly
+-- SELECT * FROM titles;
+
+-- The SELECT statement tells Postgres that we're about to query the database.
+-- The asterisk tells Postgres that we're looking for every column in a table.
+-- FROM departments tells pgAdmin which table to search.
+-- The semicolon signifies the completion of the query.
+
+
+-- DROP TABLE titles CASCADE;
