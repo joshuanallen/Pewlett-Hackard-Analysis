@@ -13,6 +13,7 @@ Pewlett Hackard has requested an analysis of their current aging workforce to pr
 Given the above data sources we built an ERD to associate the data shown below in Picture 1.1.
 
 **Picture 1.1 Hewlett Packard employee data ERD**
+
 ![Hewlett Packard employee data ERD](https://github.com/joshuanallen/Pewlett-Hackard-Analysis/blob/ec1d332f3a50d1c66e31250ceb541358116021ee/schema/Employees_DB.png)
 
 Using the employee data in employees.csv data we extracted those employees born between January 1, 1952 and December 31, 1955. That data was then passed into a new table for analysis (`retirement_titles.csv`) to identify the employees most recent position as the first query did not account for employees changing roles throughout their tenure at Pewlett Hackard. Additionally, we grouped the qualifying retiring employees into their respective job titles. 
@@ -24,6 +25,7 @@ The results from the retirement age queries are below:
 3. Grouping the 90,398 retirement-eligible employees by job title resulted in the `retiring_titles.csv` table shown in Picture 1.2.
 
 **Picture 1.2 Retirement-eligible Pewlett Hackard employees by job title**
+
 ![Retirement-eligible Pewlett Hackard employees by job title](https://github.com/joshuanallen/Pewlett-Hackard-Analysis/blob/ec1d332f3a50d1c66e31250ceb541358116021ee/Queries/Retirement_eligibility_by_title.png)
 
 Pewlett Hackard HR department requested a list of employees eligible for their mentoring program. The eligibility parameters are as follows: employee must be currently employed at PH and born in 1965. 
@@ -38,6 +40,7 @@ In addition to the above queries about employees eligible for retirement and the
     - Picture 1.3 below shows the retiring annual salaries by their most recent job title to show where salary budgets will be freed for hiring.
 
 **Picture 1.3 Sum of salaries for retirement-age employees by title**
+
 ![Sum of salaries for retirement-age employees by title](https://github.com/joshuanallen/Pewlett-Hackard-Analysis/blob/ec1d332f3a50d1c66e31250ceb541358116021ee/Queries/retiring_salaries_by_title.png)
 
 #### Expansion of mentorship program eligibilty from employees born in 1965 to 1964-1966
