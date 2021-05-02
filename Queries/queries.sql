@@ -293,3 +293,7 @@ ON (de.dept_no = d.dept_no)
 -- IN function can replace mulitple OR conditions
 -- Resource: https://www.techonthenet.com/postgresql/in.php
 WHERE d.dept_name IN ('Sales', 'Development');
+
+
+SELECT COUNT(emp_no) 
+FROM employees;
